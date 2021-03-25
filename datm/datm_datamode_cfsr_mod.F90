@@ -212,56 +212,11 @@ contains
        !--- bottom layer height ---
 !       Sa_z(n) = 10.0_r8
 
-       !--- calculate wind speed ---
-!       if (associated(Sa_wspd)) then
-!         Sa_wspd(n) = sqrt(Sa_u(n)*Sa_u(n)+Sa_v(n)*Sa_v(n)) 
-!       end if
-
        !--- temperature ---
        if (tbotmax < 50.0_r8) Sa_tbot(n) = Sa_tbot(n) + tkFrz
        ! Limit very cold forcing to 180K
        Sa_tbot(n) = max(180._r8, Sa_tbot(n))
-!       Sa_ptem(n) = Sa_tbot(n)
     end do
-
-    !----------------------------------------------------------
-    ! unit conversions (temporal resolution is hourly)
-    !----------------------------------------------------------
-
-    ! convert J/m^2 to W/m^2
-    !Faxa_lwdn(:) = Faxa_lwdn(:)/3600.0_r8
-!    Faxa_lwdn(:) = Faxa_lwdn(:)/21600.0_r8
-!    if (associated(Faxa_lwnet)) then
-!      Faxa_lwnet(:) = Faxa_lwnet(:)/3600.0_r8
-!    end if
-!    Faxa_swdn(:) = Faxa_swdn(:)/3600.0_r8
-!    Faxa_swdn(:) = Faxa_swdn(:)/21600.0_r8
-    !Faxa_swvdr(:) = Faxa_swvdr(:)/3600.0_r8
-    !Faxa_swndr(:) = Faxa_swndr(:)/3600.0_r8
-    !Faxa_swvdf(:) = Faxa_swvdf(:)/3600.0_r8
-    !Faxa_swndf(:) = Faxa_swndf(:)/3600.0_r8
-!    Faxa_swvdr(:) = Faxa_swvdr(:)/21600.0_r8
-!    Faxa_swndr(:) = Faxa_swndr(:)/21600.0_r8
-!    Faxa_swvdf(:) = Faxa_swvdf(:)/21600.0_r8
-!    Faxa_swndf(:) = Faxa_swndf(:)/21600.0_r8
-!    Faxa_swnet(:) = Faxa_swnet(:)/3600.0_r8
-!    Faxa_sen(:) = Faxa_sen(:)/3600.0_r8
-!    Faxa_lat(:) = Faxa_lat(:)/3600.0_r8
-
-    ! convert m to kg/m^2/s
-    !Faxa_rain(:) = Faxa_rain(:)/3600.0_r8*rhofw
-!    Faxa_rain(:) = Faxa_rain(:)/21600.0_r8*rhofw
-!    Faxa_rainc(:) = Faxa_rainc(:)/3600.0_r8*rhofw
-!    Faxa_rainl(:) = Faxa_rainl(:)/3600.0_r8*rhofw
-!    Faxa_snowc(:) = Faxa_snowc(:)/3600.0_r8*rhofw
-    !Faxa_snow(:) = Faxa_snow(:)/3600.0_r8*rhofw
-!    Faxa_snow(:) = Faxa_snow(:)/21600.0_r8*rhofw
-
-    ! convert N/m^2 s to N/m^2
-!    Faxa_taux(:) = Faxa_taux(:)/3600.0_r8
-!    Faxa_tauy(:) = Faxa_tauy(:)/3600.0_r8
-!    Faxa_taux(:) = Faxa_taux(:)/21600.0_r8
-!    Faxa_tauy(:) = Faxa_tauy(:)/21600.0_r8
 
   end subroutine datm_datamode_cfsr_advance
 
